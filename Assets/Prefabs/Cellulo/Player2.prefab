@@ -923,6 +923,10 @@ MonoBehaviour:
   beeeehhhhh: {fileID: 8300000, guid: 606621ca451e37dc7814bb28809e9de5, type: 3}
   wooooofff: {fileID: 8300000, guid: 38694c16ea2afe33da8620b6cad520af, type: 3}
   getAttacked: {fileID: 8300000, guid: b5d7cc4015587537eab03e862bb68a45, type: 3}
+  _player1: {fileID: 0}
+  _player2: {fileID: 0}
+  agent1: {fileID: 0}
+  agent2: {fileID: 0}
 --- !u!114 &6383957619952456493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,7 +940,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  player: 0
   inputKeyboard: 0
+  getAttackedByPlayer: {fileID: 0}
+  source: {fileID: 0}
+  _player1: {fileID: 0}
+  _player2: {fileID: 0}
 --- !u!1 &8274130671672309534
 GameObject:
   m_ObjectHideFlags: 0

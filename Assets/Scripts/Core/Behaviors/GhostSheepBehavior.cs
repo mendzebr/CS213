@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = System.Random;
 
 public class GhostSheepBehavior : AgentBehaviour
 {
-    public Boolean isAttacking = false;
+    public Boolean isAttacking;
     private const float MIN_TIME_SHEEP = 14f;
     private const float MAX_TIME_SHEEP = 15f;
     private const float MIN_TIME_GHOST = 6f;
@@ -15,8 +16,8 @@ public class GhostSheepBehavior : AgentBehaviour
 
     private float MIN_DIST_FOR_REACTION = 6f;
 
-    public int player1Score = 0;
-    public int player2Score = 0;
+    public int player1Score;
+    public int player2Score;
 
     public AudioSource source;
     public AudioClip beeeehhhhh;
@@ -27,54 +28,68 @@ public class GhostSheepBehavior : AgentBehaviour
     [SerializeField]
     private GameObject _player2;
 
-    private MoveWithKeyboardBehavior _behavior1;
-    private MoveWithKeyboardBehavior _behavior2;
 
-    //public override void Awake()
-    //{
-    //    base.Awake()
-    //    this.agent.SetVisualEffect(0, Color.green, 100);
-    //}
-
-    public GameObject GetPlayer1 => _player1;
+    
+    public GameObject GetPlayer1 => _player1; 
     public GameObject GetPlayer2 => _player2;
 
+    public CelluloAgentRigidBody agent1;
+    public CelluloAgentRigidBody agent2;
+
+    //public CelluloAgentRigidBody GetAgent1 => agent1;
+
+    
+    
+    
+    
+    
     public void Start()
     {
         gameObject.tag = "GhostSheep";
-        //_player1 = GameObject.Find("CelluloAgent_2");
-        //_player2 = GameObject.Find("CelluloAgent_1");
-        
-        _behavior1 = _player1.GetComponent<MoveWithKeyboardBehavior>();
-        _behavior2 = _player2.GetComponent<MoveWithKeyboardBehavior>();
-        
+
+   
         isAttacking = false;
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
         float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
-        this.agent.SetVisualEffect(0, Color.green, 100);
+        agent.SetVisualEffect(0, Color.green, 100);
         Invoke("transformIntoGhost",time);
 
     }
 
     private void transformIntoGhost()
     {
+        //enabling move on stone feeling for the 2 players 
+        agent1.MoveOnStone();
+        agent2.MoveOnStone();
+       
+
         isAttacking = true;
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_GHOST;
         float time = UnityEngine.Random.Range(MIN_TIME_GHOST, MAX_TIME_GHOST);
-        this.agent.SetVisualEffect(0, Color.red, 100);
+        agent.SetVisualEffect(0, Color.red, 100);
         source.PlayOneShot(wooooofff);
-
+        
+        
+        
         Invoke("transformIntoSheep",time);
     }
 
     private void transformIntoSheep()
     {
+        //gets rid of move on ice feeling from ghost mode
+        agent1.ClearHapticFeedback();
+        agent2.ClearHapticFeedback();
+        //enables back drivability for the 2 players
+        agent1.SetCasualBackdriveAssistEnabled(true);
+        agent2.SetCasualBackdriveAssistEnabled(true);
+
         isAttacking = false;
         MIN_DIST_FOR_REACTION = MIN_DIST_FOR_REACTION_SHEEP;
         float time = UnityEngine.Random.Range(MIN_TIME_SHEEP, MAX_TIME_SHEEP);
         this.agent.SetVisualEffect(0, Color.green, 100);
         source.PlayOneShot(beeeehhhhh);
         Invoke("transformIntoGhost",time);
+        
     }
     
     public override Steering GetSteering()

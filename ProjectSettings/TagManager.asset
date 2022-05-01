@@ -9,6 +9,7 @@ TagManager:
   - Ghost
   - Ghost/Sheep
   - GhostSheep
+  - PowerUpNb1
   layers:
   - Default
   - TransparentFX
