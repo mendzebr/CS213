@@ -9,7 +9,7 @@ public class ColorDropdown : MonoBehaviour
     public Player player;
     public Dropdown dropdown;
 
-    [SerializeField] private PlayersColor _playersColor;
+    [SerializeField] private GameSettings gameSettings;
     
     // Start is called before the first frame update
    
@@ -55,9 +55,9 @@ public class ColorDropdown : MonoBehaviour
         }
 
         if (player == Player.player1)
-            _playersColor.colorPlayer1 = color;
+            gameSettings.colorPlayer1 = color;
         if (player == Player.player2)
-            _playersColor.colorPlayer2 = color;
+            gameSettings.colorPlayer2 = color;
     }
    
 }

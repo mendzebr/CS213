@@ -755,7 +755,7 @@ Transform:
   m_GameObject: {fileID: 8262451474749102800}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.94, y: 0, z: -6.52}
-  m_LocalScale: {x: 1.189, y: 1.189, z: 1.189}
+  m_LocalScale: {x: 1.1890607, y: 1.1890607, z: 1.1890607}
   m_Children:
   - {fileID: 8255775871808190852}
   - {fileID: 7696374719773930395}
@@ -804,8 +804,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendWeight: 0
+  byPriority: 0
   isConnected: 0
+  updateTheta: 1
   isMoved: 1
+  simulatedTouch: 740000007200000066000000760000006200000068000000
+  ledColorWhenTouched: {r: 1, g: 1, b: 1, a: 1}
   initialColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &6383957621109679681
 AudioSource:
@@ -916,7 +920,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  priority: 1
+  enableRaycast: 0
+  distanceRaycast: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   isAttacking: 0
+  playerBeingChased: 0
   player1Score: 0
   player2Score: 0
   source: {fileID: 6383957621109679681}
@@ -940,12 +951,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  priority: 1
+  enableRaycast: 0
+  distanceRaycast: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   player: 0
   inputKeyboard: 0
   getAttackedByPlayer: {fileID: 0}
   source: {fileID: 0}
-  _player1: {fileID: 0}
-  _player2: {fileID: 0}
+  gameSettings: {fileID: 0}
 --- !u!1 &8274130671672309534
 GameObject:
   m_ObjectHideFlags: 0

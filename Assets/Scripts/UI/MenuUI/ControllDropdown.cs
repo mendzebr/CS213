@@ -7,8 +7,9 @@ public class ControllDropdown : MonoBehaviour
 {
     public Player player;
     public Dropdown dropdown;
-    [SerializeField] private PlayersControl _playersControl;
-    
+   // [SerializeField] private PlayersControl _playersControl;
+
+    [SerializeField] private GameSettings gameSettings;
     // Start is called before the first frame update
     private void Awake()
     { 
@@ -48,8 +49,8 @@ public class ControllDropdown : MonoBehaviour
         }
 
         if (player == Player.player1)
-            _playersControl.inputKeyboardPlayer1 = controll;
+            gameSettings.inputKeyboardPlayer1 = controll;
         if (player == Player.player2)
-            _playersControl.inputKeyboardPlayer2 = controll;
+            gameSettings.inputKeyboardPlayer2 = controll;
     }
 }

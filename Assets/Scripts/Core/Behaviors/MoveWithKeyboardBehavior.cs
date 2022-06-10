@@ -20,41 +20,32 @@ public enum Player
 public class MoveWithKeyboardBehavior : AgentBehaviour
 {
     public Player player; 
-    private bool isPoweredUp;
+    private bool canAttackOther;
     public InputKeyboard inputKeyboard;
     public AudioClip getAttackedByPlayer;
     public AudioSource source;
 
-    [SerializeField] private PlayersColor _playersColor;
-    [SerializeField] private PlayersControl _playersControl;
-    
-    /*
-    [SerializeField]
-    private GameObject _player1;
-    [SerializeField]
-    private GameObject _player2;
-    public GameObject GetPlayer1 => _player1;
-    public GameObject GetPlayer2 => _player2;
-    */
+   // [SerializeField] private PlayersControl _playersControl;
+
+    [SerializeField] private GameSettings gameSettings;
+
 
     public void Start()
     {
         if (player == Player.player1)
         {
-            agent.SetVisualEffect(0, _playersColor.colorPlayer1, 100);
-            inputKeyboard =_playersControl.inputKeyboardPlayer1;
+            agent.SetVisualEffect(0, gameSettings.colorPlayer1, 100);
+            inputKeyboard =gameSettings.inputKeyboardPlayer1;
         }
 
         if (player == Player.player2)
         {
-            agent.SetVisualEffect(0, _playersColor.colorPlayer2, 100);
-            inputKeyboard = _playersControl.inputKeyboardPlayer2;
+            agent.SetVisualEffect(0, gameSettings.colorPlayer2, 100);
+            inputKeyboard = gameSettings.inputKeyboardPlayer2;
         }
            
     }
-
- 
-
+    
     public override Steering GetSteering()
     {
         Steering steering = new Steering();
@@ -69,21 +60,39 @@ public class MoveWithKeyboardBehavior : AgentBehaviour
 
         return steering;
     }
+    public void powerUp(PowerUpType powerUpType)
+    {
+        GhostSheepBehavior gsB = 
+            GameObject.FindWithTag("GhostSheep").GetComponent<GhostSheepBehavior>();
+        
+        switch (powerUpType)
+        {
+            case PowerUpType.coin:
+                print("we in it");
+                if (player == Player.player1)
+                    ++gsB.player1Score;
+                else
+                    ++gsB.player2Score;
+                break;
+                
+            case PowerUpType.activateGhost:
+                gsB.chasePlayer(player == Player.player1 ? Player.player1 : Player.player2);
+                break;
+            case PowerUpType.canAttackOther:
+                canAttackOther = this;
+                Invoke("turnOffCanAttackOther",10);
+                break;
+        }
+    }
+
+    private void turnOffCanAttackOther()
+    {
+        canAttackOther = false;
+    }
     
-    public void powerUp(string powerUpName, float length)
-    {
-        isPoweredUp = true;
-        Invoke("normalize"+powerUpName , length);
-    }
-
-    private void normalizepowerUpNb1()
-    {
-        isPoweredUp = false;
-    }
-
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Dog") && isPoweredUp)
+        if (other.gameObject.CompareTag("Dog") && canAttackOther)
         {
             source.PlayOneShot(getAttackedByPlayer);
             GameObject.FindGameObjectsWithTag("Dog");

@@ -10,7 +10,8 @@ public class ScoreDisplayer : MonoBehaviour
     public TextMeshProUGUI scorePlayer1;
     public TextMeshProUGUI scorePlayer2;
 
-
+    [SerializeField] private GameSettings gameSettings;
+    
     void Start()
     {
        
@@ -19,6 +20,8 @@ public class ScoreDisplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameSettings.ScorePlayer1 = boh.player1Score;
+        gameSettings.ScorePlayer2 = boh.player2Score;
         scorePlayer1.text = boh.player1Score.ToString();
         scorePlayer2.text = boh.player2Score.ToString();
     }

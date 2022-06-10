@@ -7,9 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class CountDownTimer : MonoBehaviour
 {
-    [SerializeField]
-    private GameDuration _gameDuration;
-    
+
+    [SerializeField] private GameSettings gameSettings;
     
     private GameObject scoreText;
     public TextMeshProUGUI textUI;
@@ -21,7 +20,7 @@ public class CountDownTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = _gameDuration.duration;
+        currentTime = gameSettings.duration;
         //currentTime = ControllColorChoice.GameDuration;
         //print(ControllColorChoice.GameDuration);
 
@@ -46,8 +45,8 @@ public class CountDownTimer : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
-            ScoreKeeper.sk.sc1 = gsB.player1Score;
-            ScoreKeeper.sk.sc2 = gsB.player2Score;
+            //ScoreKeeper.sk.sc1 = gsB.player1Score;
+            //ScoreKeeper.sk.sc2 = gsB.player2Score;
             SceneManager.LoadScene("ScoreScene");
         }
 

@@ -15,11 +15,8 @@ public class RingTrigger : MonoBehaviour
         gsB = ghostSheep.GetComponent<GhostSheepBehavior>();
     }
     
-    void Update()
-    {
-        
-    }
-     void OnTriggerEnter(Collider other){
+     
+        void OnTriggerEnter(Collider other){
         if (!gsB.isAttacking && other.transform.parent.gameObject.tag.Equals("GhostSheep"))
         {
             if (gsB.FindClosestPlayer().name == gsB.GetPlayer1.name)
@@ -31,5 +28,6 @@ public class RingTrigger : MonoBehaviour
             source.PlayOneShot(getPointSound);
                 
         }
-     }
+     } 
+     
 }

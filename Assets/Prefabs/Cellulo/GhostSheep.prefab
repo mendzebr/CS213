@@ -1007,7 +1007,7 @@ Transform:
   m_GameObject: {fileID: 7897692346105538460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.2, y: 0, z: -4.85}
-  m_LocalScale: {x: 1.189, y: 1.189, z: 1.189}
+  m_LocalScale: {x: 1.1890607, y: 1.1890607, z: 1.1890607}
   m_Children:
   - {fileID: 7899959045060920520}
   - {fileID: 8502556989653012183}
@@ -1056,8 +1056,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendWeight: 0
+  byPriority: 0
   isConnected: 0
+  updateTheta: 1
   isMoved: 1
+  simulatedTouch: 740000007200000066000000760000006200000068000000
+  ledColorWhenTouched: {r: 1, g: 1, b: 1, a: 1}
   initialColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!82 &5163514612250860301
 AudioSource:
@@ -1168,7 +1172,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 1
+  priority: 1
+  enableRaycast: 0
+  distanceRaycast: 5
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1
   isAttacking: 0
+  playerBeingChased: 0
   player1Score: 0
   player2Score: 0
   source: {fileID: 5163514612250860301}

@@ -6,17 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class GameSceneManager : MonoBehaviour
 {
-
-    public void Update()
-    {
-     
-    }
-
     public void PlayGame()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene("SpaceGhostSheepGame");
-        
     }
     public void QuitGame()
     {

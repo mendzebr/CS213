@@ -10,11 +10,13 @@ TagManager:
   - Ghost/Sheep
   - GhostSheep
   - PowerUpNb1
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unwalkable
   - Water
   - UI
   - 
