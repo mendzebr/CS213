@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6819,15 +6819,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "There are three types of robots: purple, blue and green.\r\nThe purple
-    robot belongs to the first player and can be moved using keyboard arrays. \r\nThe
-    blue robot belongs to the second player and can be moved using keyboard WASD.
-    \r\nTo earn a point you should put a green robot (sheep) in the green ring. The
-    player who is closest to the sheep at the time will earn a point. \r\nRandomly
-    during the game, the sheep turns into a monster (red) that chases you and if
-    it catches you, you will lose a point. \r\nThe game ends in  2 minutes. \r\nENJOOOOOOOOY!\r\n"
+  m_text: "There are three robots in the game: 2 controlled by players, and one in
+    the middle.\nFirst of all, go to settings and select controllers (keyboard arrays
+    or WASD) and colors of robots controlled by players as well as game duration!
+    \r\nTo earn points: collect gold coins in the middle (+1) or activate a blue
+    button and you will have 10 seconds to catch the other player (it will give you
+    +2 and -2 to your opponent) \nThe red button activates the robot in the middle
+    also for 10 seconds. If it cathes you, you will lose a point (-1). There are
+    safe zones (respawn triangles) that can't be reached by robot.  \nAlso, don't
+    even try to touch firewalls! You can lose a looooooot of points because of them.\nThe
+    strongest player with more points wins. \nENJOOOOOOOOY!\r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6852,15 +6855,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6891,7 +6894,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1468753002
